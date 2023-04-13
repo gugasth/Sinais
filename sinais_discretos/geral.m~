@@ -1,0 +1,16 @@
+%% 
+clear all
+close all
+clc
+
+n = -5:5;
+
+%% Teste de funções
+x = -u(n+4) + 2.*u(n) - 2.*u(n-4) + u(n-8); % Example of a discrete signal function (sine function)
+
+%% Plotando os resultados
+
+stem(n, x); % Plotting the stem plot for the discrete signal
+xlabel('n'); % Label for x-axis
+ylabel('x[n]'); % Label for y-axis
+title('Sinal Discreto'); % Title for the plot
