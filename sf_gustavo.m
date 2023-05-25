@@ -38,8 +38,8 @@ grid on;
 hold off;
 
 harmn = 0;
-
-for k = 1:50000
+% Somando as primeiras 500 harmônicas
+for k = 1:500
     harmn = harmn + (-2/k*pi) * (cos(k*pi) - 1) .*  (sin(k.*t));
 end
 
