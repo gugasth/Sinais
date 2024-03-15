@@ -1,0 +1,31 @@
+function y=sobreposicao_armazena(x,h,N)
+
+% Verifica o comprimento da sequencia
+L = length(x)
+
+% Verifica o comprimento do impulso
+K = length(h)
+
+% Número total de blocos
+B = ceil((L + K - 1)/(N - K + 1))
+
+% Divide x(n) em blocos de comprimento N com sobreposição de K-1 amostras
+x =[zeros(1,K-1) x zeros(1,B*(N-K+1))]
+
+% Preenche h(n) com zeros até o comprimento N
+hm = [h zeros(1,N-K)]
+
+% Percorre os blocos
+for i = 1:B
+    X(i,:) = [x(1+(i-1)*(N-(K-1)):i*N-(i-1)*(K-1))];
+end
+
+% Efetua a convolução circular de cada bloco com o h(n)
+y = cconv(X(1,:),hm,N)
+y = y(K:N)
+
+% Compondo o sinal de saída
+for i = 2:B
+    y_aux = cconv(X(i,:),hm,N)
+    y = [y y_aux(K:N)]s
+end
